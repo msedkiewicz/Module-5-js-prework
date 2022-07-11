@@ -1,3 +1,5 @@
+// kolejność kodu jest odwrotna ponieważ nie jest dla mnie logiczne podawanie cyfry w momencie gdy widzę, co wylosował komputer ;)
+
 let playerInput = prompt("Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.");
 
 console.log("Gracz wpisał: " + playerInput);
@@ -34,3 +36,6 @@ if (randomNumber == 1) {
 
 printMessage("Mój ruch to: " + computerMove + ".");
 
+if( computerMove == 'kamień' && playerMove == 'papier'){
+    printMessage('Ty wygrywasz!');
+  }

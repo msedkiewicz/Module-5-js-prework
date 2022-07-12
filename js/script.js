@@ -1,5 +1,3 @@
-// kolejność kodu jest odwrotna ponieważ nie jest dla mnie logiczne podawanie cyfry w momencie gdy widzę, co wylosował komputer ;)
-
 let playerInput = prompt("Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.");
 
 console.log("Gracz wpisał: " + playerInput);
@@ -37,15 +35,24 @@ if (randomNumber == 1) {
 
 printMessage("Mój ruch to: " + computerMove + ".");
 
-// Możliwe wyniki
+//Possible results
 
-if ((computerMove == "kamień" && playerMove == "kamień") || (computerMove == "papier" && playerMove == "papier") || (computerMove == "nożyce" && playerMove == "nożyce")) {
-    printMessage("Remis!");
-} else if ((computerMove == "kamień" && playerMove == "papier") || (computerMove == "nożyce" && playerMove == "kamień") || (computerMove == "papier" && playerMove == "nożyce")) {
-    printMessage("Ty wygrywasz!");
-  }
-  else if ((computerMove == "papier" && playerMove == "kamień") || (computerMove == "kamień" && playerMove == "nożyce") || (computerMove == "nożyce" && playerMove == "papier")) {
-    printMessage("Przegrywasz!");
-  } else {
-    printMessage("Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :(")
-  }
+if (computerMove == playerMove) {
+  printMessage("Remis!");
+} else if (
+  (computerMove == "kamień" && playerMove == "papier") ||
+  (computerMove == "nożyce" && playerMove == "kamień") ||
+  (computerMove == "papier" && playerMove == "nożyce")
+) {
+  printMessage("Ty wygrywasz!");
+} else if (
+  (computerMove == "papier" && playerMove == "kamień") ||
+  (computerMove == "kamień" && playerMove == "nożyce") ||
+  (computerMove == "nożyce" && playerMove == "papier")
+) {
+  printMessage("Przegrywasz!");
+} else {
+  printMessage(
+    "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
+  );
+}

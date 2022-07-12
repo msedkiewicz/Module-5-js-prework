@@ -1,8 +1,8 @@
 let playerInput = prompt("Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.");
 let randomNumber = Math.floor(Math.random() * 3 + 1);
 
-let PlayerMove = getMoveName(playerInput);
-let ComputerMove = getMoveName(randomNumber);
+let playerMove = getMoveName(playerInput);
+let computerMove = getMoveName(randomNumber);
 
 function getMoveName(argMoveId) {
   if (argMoveId == 1) {
@@ -18,26 +18,27 @@ function getMoveName(argMoveId) {
 }
 
 function displayResult(argComputerMove, argPlayerMove) {
-  printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove);
-}
-displayResult(ComputerMove, PlayerMove);
+  printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + ".");
 
-if (ComputerMove == PlayerMove) {
-  printMessage("Remis!");
-} else if (
-  (ComputerMove == "kamień" && PlayerMove == "papier") ||
-  (ComputerMove == "nożyce" && PlayerMove == "kamień") ||
-  (ComputerMove == "papier" && PlayerMove == "nożyce")
-) {
-  printMessage("Ty wygrywasz!");
-} else if (
-  (ComputerMove == "papier" && PlayerMove == "kamień") ||
-  (ComputerMove == "kamień" && PlayerMove == "nożyce") ||
-  (ComputerMove == "nożyce" && PlayerMove == "papier")
-) {
-  printMessage("Przegrywasz!");
-} else {
-  printMessage(
-    "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
-  );
+  if (computerMove == playerMove) {
+    printMessage("Remis!");
+  } else if (
+    (computerMove == "kamień" && playerMove == "papier") ||
+    (computerMove == "nożyce" && playerMove == "kamień") ||
+    (computerMove == "papier" && playerMove == "nożyce")
+  ) {
+    printMessage("Ty wygrywasz!");
+  } else if (
+    (computerMove == "papier" && playerMove == "kamień") ||
+    (computerMove == "kamień" && playerMove == "nożyce") ||
+    (computerMove == "nożyce" && playerMove == "papier")
+  ) {
+    printMessage("Przegrywasz!");
+  } else {
+    printMessage(
+      "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
+    );
+  }
 }
+
+displayResult(computerMove, playerMove);

@@ -1,12 +1,9 @@
 {
-  const playGame = function(playerInput) {
+  const playGame = function (playerInput) {
     clearMessages();
     const randomNumber = Math.floor(Math.random() * 3 + 1);
 
-    const playerMove = getMoveName(playerInput);
-    const computerMove = getMoveName(randomNumber);
-
-    function getMoveName(argMoveId) {
+    const getMoveName = function (argMoveId) {
       if (argMoveId == 1) {
         return "kamień";
       } else if (argMoveId == 2) {
@@ -17,9 +14,12 @@
         printMessage("Nie znam ruchu  " + argMoveId + ".");
         return "nieznany ruch";
       }
-    }
+    };
 
-    function displayResult(argComputerMove, argPlayerMove) {
+    const playerMove = getMoveName(playerInput);
+    const computerMove = getMoveName(randomNumber);
+
+    const displayResult = function (argComputerMove, argPlayerMove) {
       printMessage(
         "Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + "."
       );
@@ -43,12 +43,12 @@
           "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
         );
       }
-    }
+    };
 
     displayResult(computerMove, playerMove);
-  }
+  };
 
-  document.getElementById("play-rock").addEventListener("click", function () {
+  document.getElementById("play-rock").addEventListener("click", function() {
     playGame(1);
   });
 

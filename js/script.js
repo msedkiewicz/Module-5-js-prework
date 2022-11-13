@@ -18,12 +18,13 @@
 
     const playerMove = getMoveName(playerInput);
     const computerMove = getMoveName(randomNumber);
+    let computerCounter = 0;
+    let humanCounter = 0;
 
     const displayResult = function (argComputerMove, argPlayerMove) {
       printMessage(
         "Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + "."
       );
-
       if (computerMove == playerMove) {
         printMessage("Remis!");
       } else if (
@@ -32,23 +33,26 @@
         (computerMove == "papier" && playerMove == "nożyce")
       ) {
         printMessage("Ty wygrywasz!");
+        humanCounter += 1;
       } else if (
         (computerMove == "papier" && playerMove == "kamień") ||
         (computerMove == "kamień" && playerMove == "nożyce") ||
         (computerMove == "nożyce" && playerMove == "papier")
       ) {
         printMessage("Przegrywasz!");
+        computerCounter += 1;
+        clearMessagesComputer();
+        printMessageComputer(computerCounter);
       } else {
         printMessage(
           "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
         );
       }
     };
-
     displayResult(computerMove, playerMove);
   };
 
-  document.getElementById("play-rock").addEventListener("click", function() {
+  document.getElementById("play-rock").addEventListener("click", function () {
     playGame(1);
   });
 

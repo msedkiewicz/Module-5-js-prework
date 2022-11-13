@@ -1,7 +1,7 @@
 {
   let computerCounter = 0;
   let humanCounter = 0;
-
+  let gameResult = 0;
   const playGame = function (playerInput) {
     clearMessages();
     const randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -23,30 +23,56 @@
     const computerMove = getMoveName(randomNumber);
 
     const displayResult = function (argComputerMove, argPlayerMove) {
-      printMessage(
-        "Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + "."
-      );
 
       if (computerMove == playerMove) {
-        printMessage("Remis!");
+        printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + ". Remis!");
       } else if (
-        (computerMove == "kamień" && playerMove == "papier") ||
-        (computerMove == "nożyce" && playerMove == "kamień") ||
-        (computerMove == "papier" && playerMove == "nożyce")
+        (computerMove == "kamień" && playerMove == "papier" && gameResult < 0.25) ||
+        (computerMove == "nożyce" && playerMove == "kamień" && gameResult < 0.25) ||
+        (computerMove == "papier" && playerMove == "nożyce" && gameResult < 0.25)
       ) {
-        printMessage("Ty wygrywasz!");
+        printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + ". Ty wygrywasz!");
         clearMessagesHuman();
         humanCounter += 1;
         printMessageHuman(humanCounter);
       } else if (
-        (computerMove == "papier" && playerMove == "kamień") ||
-        (computerMove == "kamień" && playerMove == "nożyce") ||
-        (computerMove == "nożyce" && playerMove == "papier")
+        (computerMove == "papier" && playerMove == "kamień" && gameResult < 0.25) ||
+        (computerMove == "kamień" && playerMove == "nożyce" && gameResult < 0.25) ||
+        (computerMove == "nożyce" && playerMove == "papier" && gameResult < 0.25)
       ) {
-        printMessage("Przegrywasz!");
+        printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + ". Przegrywasz!");
         clearMessagesComputer();
         computerCounter += 1;
         printMessageComputer(computerCounter);
+      } else if (
+        (computerMove == "nożyce" && playerMove == "kamień" && gameResult >= 0.25) ||
+        (computerMove == "papier" && playerMove == "kamień" && gameResult >= 0.25)
+      ) {
+        printMessage("Zagrałem nożyce, a Ty " + argPlayerMove + ". Wyrgywasz!");
+        clearMessagesHuman();
+        humanCounter += 1;
+        printMessageHuman(humanCounter);
+      } else if (
+        (computerMove == "kamień" && playerMove == "papier" && gameResult >= 0.25) ||
+        (computerMove == "nożyce" && playerMove == "papier" && gameResult >= 0.25)
+      ) {
+        printMessage("Zagrałem kamień, a Ty " + argPlayerMove + ". Wyrgywasz!");
+        clearMessagesHuman();
+        humanCounter += 1;
+        printMessageHuman(humanCounter);
+      } else if (
+        (computerMove == "papier" && playerMove == "nożyce" && gameResult >= 0.25) ||
+        (computerMove == "kamień" && playerMove == "nożyce" && gameResult >= 0.25)
+      ) {
+        printMessage("Zagrałem kamień, a Ty " + argPlayerMove + ". Wyrgywasz!");
+        clearMessagesHuman();
+        humanCounter += 1;
+        printMessageHuman(humanCounter);
+      } else if ((gameResult = NaN) || (gameResult = Infinity)) {
+        printMessage("Zbiesiłem się i zwiesiłem się. Punkt dla Ciebie!");
+        clearMessagesHuman();
+        humanCounter += 1;
+        printMessageHuman(humanCounter);
       } else {
         printMessage(
           "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
@@ -54,6 +80,9 @@
       }
     };
     displayResult(computerMove, playerMove);
+    gameResult = computerCounter/humanCounter;
+    console.log(gameResult);
+    console.log(computerCounter, humanCounter, computerMove, playerMove);
   };
 
   document.getElementById("play-rock").addEventListener("click", function () {

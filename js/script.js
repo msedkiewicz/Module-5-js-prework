@@ -1,4 +1,7 @@
 {
+  let computerCounter = 0;
+  let humanCounter = 0;
+
   const playGame = function (playerInput) {
     clearMessages();
     const randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -18,13 +21,12 @@
 
     const playerMove = getMoveName(playerInput);
     const computerMove = getMoveName(randomNumber);
-    let computerCounter = 0;
-    let humanCounter = 0;
 
     const displayResult = function (argComputerMove, argPlayerMove) {
       printMessage(
         "Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove + "."
       );
+
       if (computerMove == playerMove) {
         printMessage("Remis!");
       } else if (
@@ -40,14 +42,15 @@
         (computerMove == "nożyce" && playerMove == "papier")
       ) {
         printMessage("Przegrywasz!");
-        computerCounter += 1;
         clearMessagesComputer();
+        computerCounter += 1;
         printMessageComputer(computerCounter);
       } else {
         printMessage(
           "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
         );
       }
+      console.log(computerCounter);
     };
     displayResult(computerMove, playerMove);
   };

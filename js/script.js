@@ -50,7 +50,6 @@
           "Nie mam wystarczającej ilości danych, by roztrzygnąć ten pojedynek :("
         );
       }
-      console.log(computerCounter);
     };
     displayResult(computerMove, playerMove);
   };

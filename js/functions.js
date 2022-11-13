@@ -9,18 +9,18 @@ function clearMessages(){
 }
 
 function printMessageComputer(msgC){
-	let p = document.createElement('p');
-	p.innerHTML = msgC;
-	document.getElementById('computer-result').appendChild(p);
+	let spanC = document.createElement('span');
+	spanC.innerHTML = msgC;
+	document.getElementById('computer-result').appendChild(spanC);
 }
 function clearMessagesComputer(){
 	document.getElementById('computer-result').innerHTML = '';
 }
 
 function printMessageHuman(msgH){
-	let p = document.createElement('p');
-	p.innerHTML = msgH;
-	document.getElementById('human-result').appendChild(p);
+	let spanH = document.createElement('span');
+	spanH.innerHTML = msgH;
+	document.getElementById('human-result').appendChild(spanH);
 }
 function clearMessagesHuman(){
 	document.getElementById('human-result').innerHTML = '';

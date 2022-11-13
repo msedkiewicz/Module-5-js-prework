@@ -35,7 +35,9 @@
         (computerMove == "papier" && playerMove == "nożyce")
       ) {
         printMessage("Ty wygrywasz!");
+        clearMessagesHuman();
         humanCounter += 1;
+        printMessageHuman(humanCounter);
       } else if (
         (computerMove == "papier" && playerMove == "kamień") ||
         (computerMove == "kamień" && playerMove == "nożyce") ||

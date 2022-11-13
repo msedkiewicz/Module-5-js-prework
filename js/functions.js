@@ -16,3 +16,12 @@ function printMessageComputer(msgC){
 function clearMessagesComputer(){
 	document.getElementById('computer-result').innerHTML = '';
 }
+
+function printMessageHuman(msgH){
+	let p = document.createElement('p');
+	p.innerHTML = msgH;
+	document.getElementById('human-result').appendChild(p);
+}
+function clearMessagesHuman(){
+	document.getElementById('human-result').innerHTML = '';
+}
